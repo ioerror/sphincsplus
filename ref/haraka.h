@@ -1,4 +1,5 @@
-#ifndef SPX_HARAKA_H
+#include "params.h"
+#if !defined(SPX_HARAKA_H) && HARAKA_PARAM(PARAMS)
 #define SPX_HARAKA_H
 
 #include "context.h"

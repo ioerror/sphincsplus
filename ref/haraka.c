@@ -1,3 +1,6 @@
+#include "params.h"
+#if !defined(SPX_HARAKA_C) && HARAKA_PARAM(PARAMS)
+#define SPX_HARAKA_C
 /*
  * Constant time implementation of the Haraka hash function.
  *
@@ -963,3 +966,4 @@ void haraka256(unsigned char *out, const unsigned char *in,
         out[i] ^= in[i];
     }
 }
+#endif

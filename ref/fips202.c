@@ -9,6 +9,7 @@
 #include <stdint.h>
 
 #include "fips202.h"
+#if defined(SPX_FIPS202_H) && defined(PARAMS) && SHAKE_PARAM(PARAMS)
 
 #define NROUNDS 24
 #define ROL(a, offset) (((a) << (offset)) ^ ((a) >> (64 - (offset))))
@@ -596,3 +597,4 @@ void shake256(uint8_t *output, size_t outlen,
         }
     }
 }
+#endif

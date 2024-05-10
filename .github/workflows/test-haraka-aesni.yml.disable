@@ -24,9 +24,9 @@ jobs:
       - name: Run make
         run: |
           make -C haraka-aesni THASH=${{ matrix.thash }} clean
-          make -C haraka-aesni THASH=${{ matrix.thash }} PARAMS=sphincs-haraka-${{ matrix.size }}${{ matrix.option }} tests
-          make -C haraka-aesni THASH=${{ matrix.thash }} PARAMS=sphincs-haraka-${{ matrix.size }}${{ matrix.option }} test
-          make -C haraka-aesni THASH=${{ matrix.thash }} PARAMS=sphincs-haraka-${{ matrix.size }}${{ matrix.option }} PQCgenKAT_sign
+          make -C haraka-aesni THASH=${{ matrix.thash }} PARAMS=sphincs_haraka_${{ matrix.size }}${{ matrix.option }} tests
+          make -C haraka-aesni THASH=${{ matrix.thash }} PARAMS=sphincs_haraka_${{ matrix.size }}${{ matrix.option }} test
+          make -C haraka-aesni THASH=${{ matrix.thash }} PARAMS=sphincs_haraka_${{ matrix.size }}${{ matrix.option }} PQCgenKAT_sign
       - name: Run PQCgenKAT_sign
         run: python3 vectors.py sphincs-haraka-${{ matrix.size }}${{ matrix.option }}-${{ matrix.thash }} haraka-aesni
 

@@ -1,9 +1,10 @@
+#include "params.h"
+#if defined(SPX_HARAKA_H) && HARAKA_PARAM(PARAMS)
 #include <stdint.h>
 #include <string.h>
 
 #include "thash.h"
 #include "address.h"
-#include "params.h"
 #include "utils.h"
 
 #include "haraka.h"
@@ -44,3 +45,4 @@ void thash(unsigned char *out, const unsigned char *in, unsigned int inblocks,
         haraka_S(out, SPX_N, buf, SPX_ADDR_BYTES + inblocks*SPX_N, ctx);
     }
 }
+#endif
