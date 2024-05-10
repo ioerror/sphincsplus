@@ -7,6 +7,7 @@
 #include "utils.h"
 
 #include "fips202.h"
+#if defined(SPX_FIPS202_H) && SHAKE_PARAM(PARAMS)
 
 /**
  * Takes an array of inblocks concatenated arrays of SPX_N bytes.
@@ -29,3 +30,4 @@ void thash(unsigned char *out, const unsigned char *in, unsigned int inblocks,
 
     shake256(out, SPX_N, buf, SPX_N + SPX_ADDR_BYTES + inblocks*SPX_N);
 }
+#endif

@@ -24,9 +24,9 @@ jobs:
       - name: Run make
         run: |
           make -C sha2-avx2 THASH=${{ matrix.thash }} clean
-          make -C sha2-avx2 THASH=${{ matrix.thash }} PARAMS=sphincs-sha2-${{ matrix.size }}${{ matrix.option }} tests
-          make -C sha2-avx2 THASH=${{ matrix.thash }} PARAMS=sphincs-sha2-${{ matrix.size }}${{ matrix.option }} test
-          make -C sha2-avx2 THASH=${{ matrix.thash }} PARAMS=sphincs-sha2-${{ matrix.size }}${{ matrix.option }} PQCgenKAT_sign
+          make -C sha2-avx2 THASH=${{ matrix.thash }} PARAMS=sphincs_sha2_${{ matrix.size }}${{ matrix.option }} tests
+          make -C sha2-avx2 THASH=${{ matrix.thash }} PARAMS=sphincs_sha2_${{ matrix.size }}${{ matrix.option }} test
+          make -C sha2-avx2 THASH=${{ matrix.thash }} PARAMS=sphincs_sha2_${{ matrix.size }}${{ matrix.option }} PQCgenKAT_sign
       - name: Run PQCgenKAT_sign
         run: python3 vectors.py sphincs-sha2-${{ matrix.size }}${{ matrix.option }}-${{ matrix.thash }} sha2-avx2
 

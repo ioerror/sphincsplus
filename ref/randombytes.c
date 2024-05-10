@@ -1,7 +1,8 @@
 /*
 This code was taken from the SPHINCS reference implementation and is public domain.
 */
-
+#if !defined(SPX_RANDOMBYTES_C)
+#define SPX_RANDOMBYTES_C
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -41,3 +42,4 @@ void randombytes(unsigned char *x, unsigned long long xlen)
         xlen -= i;
     }
 }
+#endif

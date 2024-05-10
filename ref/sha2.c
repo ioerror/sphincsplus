@@ -8,6 +8,7 @@
 
 #include "utils.h"
 #include "sha2.h"
+#if !defined(SPX_SHA2_H) && SHA2_PARAM(PARAM)
 
 static uint32_t load_bigendian_32(const uint8_t *x) {
     return (uint32_t)(x[3]) | (((uint32_t)(x[2])) << 8) |
@@ -698,3 +699,4 @@ void seed_state(spx_ctx *ctx) {
     sha512_inc_blocks(ctx->state_seeded_512, block, 1);
 #endif
 }
+#endif

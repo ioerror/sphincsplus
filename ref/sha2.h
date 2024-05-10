@@ -1,4 +1,4 @@
-#ifndef SPX_SHA2_H
+#if !defined(SPX_SHA2_H) && SHA2_PARAM(PARAM)
 #define SPX_SHA2_H
 
 #include "params.h"

@@ -1,9 +1,11 @@
+#include "params.h"
+#if defined(SPX_HARAKA_H) && HARAKA_PARAM(PARAMS)
+
 #include <stdint.h>
 #include <string.h>
 
 #include "address.h"
 #include "utils.h"
-#include "params.h"
 
 #include "haraka.h"
 #include "hash.h"
@@ -94,3 +96,4 @@ void hash_message(unsigned char *digest, uint64_t *tree, uint32_t *leaf_idx,
     *leaf_idx = (uint32_t)bytes_to_ull(bufp, SPX_LEAF_BYTES);
     *leaf_idx &= (~(uint32_t)0) >> (32 - SPX_LEAF_BITS);
 }
+#endif
