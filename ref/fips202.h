@@ -1,4 +1,5 @@
-#ifndef SPX_FIPS202_H
+#include "params.h"
+#if (!defined(SPX_FIPS202_H) && defined(PARAMS) && SHAKE_PARAM(PARAMS))
 #define SPX_FIPS202_H
 
 #include <stddef.h>

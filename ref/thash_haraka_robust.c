@@ -7,6 +7,7 @@
 #include "utils.h"
 
 #include "haraka.h"
+#if defined(SPX_HARAKA_H) && HARAKA_PARAM(PARAMS)
 
 /**
  * Takes an array of inblocks concatenated arrays of SPX_N bytes.
@@ -44,3 +45,4 @@ void thash(unsigned char *out, const unsigned char *in, unsigned int inblocks,
         haraka_S(out, SPX_N, buf, SPX_ADDR_BYTES + inblocks*SPX_N, ctx);
     }
 }
+#endif

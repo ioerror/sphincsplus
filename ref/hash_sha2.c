@@ -1,9 +1,10 @@
 #include <stdint.h>
 #include <string.h>
+#include "params.h"
+#if defined(SPX_SHA2_H) && SHA2_PARAM(PARAM)
 
 #include "address.h"
 #include "utils.h"
-#include "params.h"
 #include "hash.h"
 #include "sha2.h"
 
@@ -194,4 +195,4 @@ void hash_message(unsigned char *digest, uint64_t *tree, uint32_t *leaf_idx,
     *leaf_idx &= (~(uint32_t)0) >> (32 - SPX_LEAF_BITS);
 }
 
-
+#endif

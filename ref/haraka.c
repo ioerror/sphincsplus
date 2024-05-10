@@ -35,6 +35,7 @@
 
 #include "haraka.h"
 #include "utils.h"
+#if defined(SPX_HARAKA_H) && HARAKA_PARAM(PARAMS)
 
 #define HARAKAS_RATE 32
 
@@ -963,3 +964,4 @@ void haraka256(unsigned char *out, const unsigned char *in,
         out[i] ^= in[i];
     }
 }
+#endif

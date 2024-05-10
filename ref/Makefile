@@ -1,5 +1,6 @@
-PARAMS = sphincs-haraka-128f
+PARAMS ?= sphincs_haraka_128f
 THASH = robust
+DESTDIR ?= /usr/local
 
 CC=/usr/bin/gcc
 CFLAGS=-Wall -Wextra -Wpedantic -O3 -std=c99 -Wconversion -Wmissing-prototypes -DPARAMS=$(PARAMS) $(EXTRA_CFLAGS)
@@ -32,7 +33,7 @@ BENCHMARK = test/benchmark
 
 default: PQCgenKAT_sign
 
-all: PQCgenKAT_sign tests benchmarks
+all: PQCgenKAT_sign tests benchmarks libsphincsplus.so
 
 tests: $(TESTS)
 
@@ -57,9 +58,27 @@ test/haraka: test/haraka.c $(filter-out haraka.c,$(SOURCES)) $(HEADERS)
 test/%.exec: test/%
 	@$<
 
+libsphincsplus.so:
+	$(CC) -shared -o libsphincsplus.so $(CFLAGS) $(SOURCES)
+
+libsphincsplus.a: $(SOURCES) $(HEADERS) Makefile
+	$(CC) -c $(CFLAGS) $(SOURCES)
+	ar -rcs libsphincsplus.a $(SOURCES:.c=.o)
+
+install: libsphincsplus.so
+	install -d $(DESTDIR)/include/sphincsplus/
+	install -d $(DESTDIR)/include/sphincsplus/params
+	install -d $(DESTDIR)/lib/
+	install -v *.h $(DESTDIR)/include/sphincsplus/
+	install -v params/* $(DESTDIR)/include/sphincsplus/params
+	install -v libsphincsplus.so $(DESTDIR)/lib/
+
 clean:
 	-$(RM) $(TESTS)
 	-$(RM) $(BENCHMARK)
 	-$(RM) PQCgenKAT_sign
 	-$(RM) PQCsignKAT_*.rsp
 	-$(RM) PQCsignKAT_*.req
+	-$(RM) libsphincsplus.so
+	-$(RM) libsphincsplus.a
+	-$(RM) *.o

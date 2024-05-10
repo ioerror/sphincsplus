@@ -1,9 +1,10 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "params.h"
+#if defined(SPX_SHA2_H) && SHA2_PARAM(PARAM)
 #include "thash.h"
 #include "address.h"
-#include "params.h"
 #include "utils.h"
 #include "sha2.h"
 
@@ -56,4 +57,5 @@ static void thash_512(unsigned char *out, const unsigned char *in, unsigned int 
     sha512_inc_finalize(outbuf, sha2_state, buf, SPX_SHA256_ADDR_BYTES + inblocks*SPX_N);
     memcpy(out, outbuf, SPX_N);
 }
+#endif
 #endif
