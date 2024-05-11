@@ -1,7 +1,7 @@
 package sphincsplus
 
 import (
-	"encoding/hex"
+//	"encoding/hex"
 	"testing"
 
 	"github.com/stretchr/testify/require"
