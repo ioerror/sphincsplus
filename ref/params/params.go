@@ -1,3 +1,5 @@
 package params
 
-const A = 1
+func Name() string {
+	return BuildTagSignatureName
+}
