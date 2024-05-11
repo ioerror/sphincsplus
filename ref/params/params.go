@@ -1,3 +1,3 @@
-package params
+package sphincsplus
 
 const A = 1
