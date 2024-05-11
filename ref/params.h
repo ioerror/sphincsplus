@@ -1,5 +1,5 @@
 #ifndef PARAMS
-#define PARAMS = sphincs-haraka-128f
+#define PARAMS sphincs_haraka_128f
 #endif
 
 #define sphincs_haraka_128f 0x01

@@ -4,6 +4,7 @@
 package sphincsplus
 
 import "runtime"
+import "C"
 
 // ExplicitBzero explicitly clears out the buffer b, by filling it with 0x00
 // bytes.

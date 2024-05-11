@@ -1,7 +1,11 @@
+//go:build ((linux && amd64) || (darwin && amd64)) && (sphincs_haraka_128f || sphincs_haraka_128s || sphincs_haraka_192f || sphincs_haraka_192s || sphincs_haraka_256f || sphincs_haraka_256s || sphincs_sha2_128f || sphincs_sha2_128s || sphincs_sha2_192f || sphincs_sha2_192s || sphincs_sha2_256f || sphincs_sha2_256s || sphincs_shake_128f || sphincs_shake_128s || sphincs_shake_192f || sphincs_shake_192s || sphincs_shake_256f || sphincs_shake_256s)
+
 package sphincsplus
 
-//#cgo linux LDFLAGS: "-L./ -L/usr/lib/x86_64-linux-gnu/"
-//#cgo linux CFLAGS: -O3 -std=c99 -Wconversion -Wpedantic -D PARAMS=sphincs_shake_256f -D CGO=1
+//#cgo amd64 LDFLAGS: "-L./"
+//#cgo amd64 CFLAGS: -O3 -std=c99 -Wconversion -Wpedantic -D CGO=1
+//#cgo linux/amd64 LDFLAGS: "-L./ -L/usr/lib/x86_64-linux-gnu/"
+//#cgo linux/amd64 CFLAGS: -O3 -std=c99 -Wconversion -Wpedantic -D PARAMS=sphincs_shake_256f -D CGO=1
 //#include "api.h"
 import "C"
 import (
@@ -25,6 +29,9 @@ var (
 	// SignatureSize is the size in bytes of the signature.
 	SignatureSize int = C.CRYPTO_BYTES
 
+	// PARAMS are the signature parameters
+	SignatureName int = C.PARAMS
+
 	// ErrPublicKeySize indicates the raw data is not the correct size for a public key.
 	ErrPublicKeySize error = fmt.Errorf("%s: raw public key data size is wrong", Name())
 
@@ -35,7 +42,7 @@ var (
 // Name returns the string naming of the current
 // Sphincs+ that this binding is being used with.
 func Name() string {
-	return "Sphincs+shake-256f"
+	return fmt.Sprint(SignatureName)
 }
 
 // NewKeypair generates a new Sphincs+ keypair.
