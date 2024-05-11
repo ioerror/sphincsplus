@@ -21,7 +21,7 @@ func TestSignVerifyVector_sphincs_shake_256f(t *testing.T) {
 		t.Logf("sig %x", signature1)
 	*/
 
-	privKey := new(sphincsplus.PrivateKey)
+	privKey := new(PrivateKey)
 	privKeyBytes, err := hex.DecodeString("9514fae2e8c367517659af493944386d8d8417b01f4a73ce5551e13089366478183f8324d34ce31a9035d12689fe747df2f6cc3464db43b03bf388caa5ae84d2")
 	require.NoError(t, err)
 	err = privKey.FromBytes(privKeyBytes)
