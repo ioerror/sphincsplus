@@ -3,9 +3,11 @@
 package sphincsplus
 
 //#cgo amd64 LDFLAGS: "-L./"
-//#cgo amd64 CFLAGS: -O3 -std=c99 -Wconversion -Wpedantic -D CGO=1
+//#cgo amd64 CFLAGS: -O3 -std=c99 -D CGO=1
+//#cgo darwin/amd64 LDFLAGS: "-L./ -L/usr/lib/x86_64-linux-gnu/"
+//#cgo darwin/amd64 CFLAGS: -O3 -std=c99 -D PARAMS=sphincs_shake_256f -D CGO=1
 //#cgo linux/amd64 LDFLAGS: "-L./ -L/usr/lib/x86_64-linux-gnu/"
-//#cgo linux/amd64 CFLAGS: -O3 -std=c99 -Wconversion -Wpedantic -D PARAMS=sphincs_shake_256f -D CGO=1
+//#cgo linux/amd64 CFLAGS: -O3 -std=c99 -D PARAMS=sphincs_shake_256f -D CGO=1
 //#include "api.h"
 import "C"
 import (
