@@ -35,6 +35,6 @@ privKey := new(PrivateKey)
 
 	message := []byte("i am a message")
 */
-	require.True(t, pubKey.Verify(signature1, message1))
+	require.True(t, pubKey1.Verify(signature1, message1))
 
 }
