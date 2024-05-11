@@ -1,13 +1,14 @@
+#include "params.h"
+#if defined(SPX_HARAKA_H) && HARAKA_PARAM(PARAMS)
+
 #include <stdint.h>
 #include <string.h>
 
 #include "address.h"
 #include "utils.h"
-#include "params.h"
 
 #include "haraka.h"
 #include "hash.h"
-#if defined(SPX_HARAKA_H) && HARAKA_PARAM(PARAMS)
 
 void initialize_hash_function(spx_ctx* ctx)
 {

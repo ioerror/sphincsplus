@@ -1,13 +1,13 @@
+#include "params.h"
+#if defined(SPX_HARAKA_H) && HARAKA_PARAM(PARAMS)
 #include <stdint.h>
 #include <string.h>
 
 #include "thash.h"
 #include "address.h"
-#include "params.h"
 #include "utils.h"
 
 #include "haraka.h"
-#if defined(SPX_HARAKA_H) && HARAKA_PARAM(PARAMS)
 
 /**
  * Takes an array of inblocks concatenated arrays of SPX_N bytes.

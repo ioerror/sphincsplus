@@ -1,3 +1,6 @@
+#include "params.h"
+#if !defined(SPX_HARAKA_C) && HARAKA_PARAM(PARAMS)
+#define SPX_HARAKA_C
 /*
  * Constant time implementation of the Haraka hash function.
  *
@@ -35,7 +38,6 @@
 
 #include "haraka.h"
 #include "utils.h"
-#if defined(SPX_HARAKA_H) && HARAKA_PARAM(PARAMS)
 
 #define HARAKAS_RATE 32
 
