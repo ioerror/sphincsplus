@@ -18,7 +18,7 @@ import (
 )
 
 var (
-	_ = params.A
+	_ = sphincsplus.A
 
 	// PublicKeySize is the size in bytes of the public key.
 	PublicKeySize int = C.CRYPTO_PUBLICKEYBYTES
