@@ -39,7 +39,7 @@ jobs:
         run: |
           export CGO_ENABLE=1
           export CGO_LDFLAGS="-L./"
-          export CGO_CFLAGS="-O3 -std=c99 -Wconversion -Wpedantic -D CGO=1 -D HASH=${{ matrix.hash }} -D THASH=${{ matrix.thash }} -D PARAMS=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }}" 
+          export CGO_CFLAGS="-O3 -std=c99 -D CGO=1 -D HASH=${{ matrix.hash }} -D THASH=${{ matrix.thash }} -D PARAMS=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }}" 
           go test --tags=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v ./...
 
 #  vim: set ft=yaml ts=2 sw=2 et :
