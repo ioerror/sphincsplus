@@ -61,6 +61,7 @@ func TestSizes(t *testing.T) {
 	require.Equal(t, PublicKeySize, len(pubKey.Bytes()))
 	require.Equal(t, SignatureSize, len(sig))
 
+	t.Logf("Scheme %s", SignatureName)
 	t.Logf("PrivateKeySize %d", PrivateKeySize)
 	t.Logf("PublicKeySize %d", PublicKeySize)
 	t.Logf("SignatureSize %d", SignatureSize)

@@ -2,11 +2,11 @@
 
 package sphincsplus
 
-//#cgo amd64 LDFLAGS: "-L./"
+//#cgo amd64 LDFLAGS: "-L./ -X github.com/ioerror/sphincsplus/binding.SignatureName=sphincs_shake_256f"
 //#cgo amd64 CFLAGS: -O3 -std=c99 -D CGO=1
-//#cgo darwin/amd64 LDFLAGS: "-L./ -L/usr/lib/x86_64-linux-gnu/"
+//#cgo darwin/amd64 LDFLAGS: "-L./ -L/usr/lib/x86_64-linux-gnu/ -X github.com/ioerror/sphincsplus/binding.SignatureName=sphincs_shake_256f"
 //#cgo darwin/amd64 CFLAGS: -O3 -std=c99 -D PARAMS=sphincs_shake_256f -D CGO=1
-//#cgo linux/amd64 LDFLAGS: "-L./ -L/usr/lib/x86_64-linux-gnu/"
+//#cgo linux/amd64 LDFLAGS: "-L./ -L/usr/lib/x86_64-linux-gnu/ -X github.com/ioerror/sphincsplus/binding.SignatureName=sphincs_shake_256f" 
 //#cgo linux/amd64 CFLAGS: -O3 -std=c99 -D PARAMS=sphincs_shake_256f -D CGO=1
 //#include "api.h"
 import "C"
@@ -31,8 +31,9 @@ var (
 	// SignatureSize is the size in bytes of the signature.
 	SignatureSize int = C.CRYPTO_BYTES
 
-	// PARAMS are the signature parameters
-	SignatureName int = C.PARAMS
+  // SignatureName is the name of the SPHINCS+ parameters selected at compile time
+	SignatureName string // we get this from the linker
+	SignatureScheme string // we get this from the linker
 
 	// ErrPublicKeySize indicates the raw data is not the correct size for a public key.
 	ErrPublicKeySize error = fmt.Errorf("%s: raw public key data size is wrong", Name())
@@ -44,7 +45,11 @@ var (
 // Name returns the string naming of the current
 // Sphincs+ that this binding is being used with.
 func Name() string {
-	return fmt.Sprint(SignatureName)
+	return SignatureName
+}
+
+func init() {
+SignatureName = "foo 123"
 }
 
 // NewKeypair generates a new Sphincs+ keypair.

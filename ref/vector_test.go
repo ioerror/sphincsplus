@@ -14,7 +14,8 @@ func TestSignVerifyVector(t *testing.T) {
 		message1 := []byte("i am a message")
 		signature1 := privKey1.Sign(message1)
 		require.True(t, pubKey1.Verify(signature1, message1))
-  
+
+    t.Logf("SPHINCS+ scheme: %s", SignatureName)
 		t.Logf("priv key %x", privKey1.Bytes())
 		t.Logf("pub key %x", pubKey1.Bytes())
 		t.Logf("sig %x", signature1)
