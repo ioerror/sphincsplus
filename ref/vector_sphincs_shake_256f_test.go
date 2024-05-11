@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestSignVerifyVector(t *testing.T) {
+func TestSignVerifyVector_sphincs_shake_256f(t *testing.T) {
 /*
 		privKey1, pubKey1 := NewKeypair()
 		message1 := []byte("i am a message")
