@@ -1,5 +1,5 @@
-//go:build sphincs_shake_128f
+//go:build sphincs_shake_128s
 
 package params
 
-var BuildTagSignatureName = "sphincs_shake_128f"
+var BuildTagSignatureName = "sphincs_shake_128s"
