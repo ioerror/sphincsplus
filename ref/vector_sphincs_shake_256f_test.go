@@ -1,4 +1,4 @@
-//go:build sphincs_shake_256f
+//go:build linux/amd && sphincs_shake_256f
 
 package sphincsplus
 
