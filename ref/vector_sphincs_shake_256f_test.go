@@ -1,12 +1,11 @@
-//no:build sphincs_shake_256f
+//go:build sphincs_shake_256f
 
-package params
+package sphincsplus
 
 import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/katzenpost/sphincsplus/ref"
 	"github.com/stretchr/testify/require"
 )
 
