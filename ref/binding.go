@@ -7,7 +7,7 @@ package sphincsplus
 //#cgo darwin/amd64 LDFLAGS: -L./
 //#cgo darwin/amd64 CFLAGS: -O3 -std=c99 -D CGO=1 -D PARAMS=sphincs_shake_256f
 //#cgo linux/amd64 LDFLAGS: -L./ -L/usr/lib/x86_64-linux-gnu/
-//#cgo linux/amd64 CFLAGS: -O3 -std=c99 -D PARAMS=sphincs_shake_256f -D CGO=1
+//#cgo linux/amd64 CFLAGS: -O3 -std=c99 -D CGO=1 -D PARAMS=sphincs_shake_256f
 //#include "api.h"
 import "C"
 import (
