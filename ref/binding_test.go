@@ -3,7 +3,6 @@
 package sphincsplus
 
 import (
-	"C"
 	"testing"
 
 	"github.com/stretchr/testify/require"
