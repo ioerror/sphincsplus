@@ -1,8 +1,9 @@
+#include "params.h"
+#if defined(SPX_SHA2_H) && SHA2_PARAM(PARAM)
+
 #include <stdint.h>
 #include <string.h>
 
-#include "params.h"
-#if defined(SPX_SHA2_H) && SHA2_PARAM(PARAM)
 #include "thash.h"
 #include "address.h"
 #include "utils.h"
