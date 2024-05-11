@@ -35,7 +35,7 @@ jobs:
 
       - name: Run go test
         run: |
-          export CGO_CFLAGS="-D HASH=${{ matrix.hash }} -D THASH=${{ matrix.thash }} -D PARAMS=sphincs-${{ matrix.hash }}-${{ matrix.size }}${{ matrix.option }}" 
-          go test --tags=sphincs-${{ matrix.hash }}-${{ matrix.size }}${{ matrix.option }} -v ./...
+          export CGO_CFLAGS="-D HASH=${{ matrix.hash }} -D THASH=${{ matrix.thash }} -D PARAMS=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }}" 
+          go test --tags=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v ./...
 
 #  vim: set ft=yaml ts=2 sw=2 et :
