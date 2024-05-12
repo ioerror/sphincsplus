@@ -13,7 +13,7 @@ ssize_t getrandom(char *buf, size_t buflen);
 void randombytes(unsigned char * x, unsigned long long xlen)
 {
   ssize_t n;
-  n = getrandom((char *) x, xlen)
+  n = getrandom((char *) x, xlen);
   if (n != 1) {
       exit(2);
   }
