@@ -1,4 +1,4 @@
-//go:build (cgo && (linux || darwin) && (amd64)) && (sphincs_haraka_128f || sphincs_haraka_128s || sphincs_haraka_192f || sphincs_haraka_192s || sphincs_haraka_256f || sphincs_haraka_256s)
+//go:build cgo && ((linux && amd64) || (darwin && amd64) || (darwin && arm64)) && (sphincs_haraka_128f || sphincs_haraka_128s || sphincs_haraka_192f || sphincs_haraka_192s || sphincs_haraka_256f || sphincs_haraka_256s)
 
 /*
  * Constant time implementation of the Haraka hash function.

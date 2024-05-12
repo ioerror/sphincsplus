@@ -1,4 +1,4 @@
-//go:build cgo && ((linux && amd64) || (darwin && amd64)) && sphincs_shake_256f
+//go:build cgo && ((linux && amd64) || (darwin && amd64) || (darwin && arm64)) && sphincs_shake_256f
 
 package sphincsplus
 
