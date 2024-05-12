@@ -1,4 +1,4 @@
-//go:build (cgo && (linux || darwin) && (amd64)) 
+//go:build cgo && (linux && amd64 || darwin && amd64)
 
 /*
 This code was taken from the SPHINCS reference implementation and is public domain.
