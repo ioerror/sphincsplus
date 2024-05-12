@@ -66,7 +66,7 @@ jobs:
         run: |
           export CGO_ENABLE=1
           export CGO_CFLAGS="-D HASH=${{ matrix.hash }} -D THASH=${{ matrix.thash }} -D PARAMS=sphincs-${{ matrix.hash }}-${{ matrix.size }}${{ matrix.option }}"
-          go build -v ./...
+          go build --tags=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v ./...
 
       - name: Golang test
         shell: msys2 {0}
