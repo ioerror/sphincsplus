@@ -1,7 +1,8 @@
 #ifndef PARAMS
-#define PARAMS sphincs_haraka_128f
+#define PARAMS sphincs-haraka-128f
 #endif
 
+/*
 #define sphincs_haraka_128f 0x01
 #define sphincs_haraka_128s 0x02
 #define sphincs_haraka_192f 0x03
@@ -96,3 +97,9 @@
 #else
 #error "Set PARAMS to a valid parameter"
 #endif
+*/
+
+#define str(s) #s
+#define xstr(s) str(s)
+
+#include xstr(params/params-PARAMS_H.h)

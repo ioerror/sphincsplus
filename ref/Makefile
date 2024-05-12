@@ -1,4 +1,4 @@
-PARAMS ?= sphincs_haraka_128f
+PARAMS ?= sphincs-haraka-128f
 THASH = robust
 DESTDIR ?= /usr/local
 
