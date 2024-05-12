@@ -1,12 +1,13 @@
 //go:build cgo && ((linux && amd64) || (darwin && amd64)) && SPECIFIC_BUILD_TAG
 
-package sphincsplus
+package tess
 
 import (
 	"encoding/hex"
 	"testing"
 
 	"github.com/stretchr/testify/require"
+  sphincsplus "github.com/katzenpost/sphincsplus/ref"
 )
 
 func TestSignVerifyVectorSpecifics(t *testing.T) {
