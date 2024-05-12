@@ -1,4 +1,4 @@
-name: Tests for ref implementation
+name: Tests for ref implementation (gcc, clang) (ubuntu, macos)
 
 on:
   - push
@@ -6,9 +6,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ['ubuntu-latest', 'macos-latest']
     strategy:
       matrix:
+        CC: ['gcc', 'clang']
         hash:
           - sha2
           - shake
@@ -27,6 +28,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Run make
         run: |
+          export CC=${{ matrix.CC }}
           make -C ref HASH=${{ matrix.hash }} THASH=${{ matrix.thash }} clean
           make -C ref HASH=${{ matrix.hash }} THASH=${{ matrix.thash }} PARAMS=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} tests
           make -C ref HASH=${{ matrix.hash }} THASH=${{ matrix.thash }} PARAMS=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} test
