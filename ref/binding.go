@@ -42,7 +42,7 @@ var (
 )
 
 func SchemeName() string {
-  return SignatureName
+	return SignatureName
 }
 
 // NewKeypair generates a new Sphincs+ keypair.
