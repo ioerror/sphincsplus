@@ -7,25 +7,23 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        OS: ["windows-2022"] # ["windows-2019", "windows-2022"]
+        OS: ["windows-2019", "windows-2022"]
         CC: ["gcc"]
         ENVIRONMENT: ["UCRT64", "MINGW64"] # https://www.msys2.org/docs/environments/
-          #ENVIRONMENT: ["MINGW64"] # https://www.msys2.org/docs/environments/
-        go-version: ["1.22.x"]
-        #go-version: [ "1.19", "1.20", "1.21.x", "1.22.x"]
+        go-version: [ "1.19", "1.20", "1.21.x", "1.22.x"]
         hash:
           - sha2
-            #    - shake
-            #- haraka
+          - shake
+          - haraka
         size:
           - 128
-            #- 192
-            #- 256
+          - 192
+          - 256
         option:
           - s
-            #- f
+          - f
         thash:
-          #- simple
+          - simple
           - robust
       fail-fast: false
     steps:
