@@ -1,4 +1,4 @@
-//go:build cgo && ((linux && amd64) || (darwin && amd64) || (darwin && arm64)) && openssl
+//go:build cgo && ((linux && amd64) || (darwin && amd64) || (darwin && arm64) || (windows && amd64)) && openssl
 
 //
 //  rng.c

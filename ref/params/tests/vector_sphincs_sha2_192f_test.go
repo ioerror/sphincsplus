@@ -1,4 +1,4 @@
-//go:build cgo && ((linux && amd64) || (darwin && amd64)) && sphincs_sha2_192f
+//go:build cgo && ((linux && amd64) || (darwin && amd64) || (darwin && arm64) || (windows && amd64)) && sphincs_sha2_192f
 
 package tests
 
