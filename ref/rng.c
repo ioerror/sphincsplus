@@ -1,3 +1,5 @@
+//go:build (cgo && (linux || darwin) && (amd64)) && (openssl))
+
 //
 //  rng.c
 //
@@ -5,8 +7,6 @@
 //  Copyright © 2017 Bassham, Lawrence E (Fed). All rights reserved.
 //
 //
-#if !defined(SPX_RNG_C) && !defined(CGO)
-#define SPX_RNG_C
 
 #include <string.h>
 #include "rng.h"
@@ -211,6 +211,3 @@ AES256_CTR_DRBG_Update(unsigned char *provided_data,
     memcpy(V, temp+32, 16);
 }
 
-#else
-typedef int no_empty_translation_unit_RNG;
-#endif

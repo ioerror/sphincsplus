@@ -1,3 +1,5 @@
+//go:build (cgo && (linux || darwin) && (amd64)) && (sphincs_shake_128f || sphincs_shake_128s || sphincs_shake_192f || sphincs_shake_192s || sphincs_shake_256f || sphincs_shake_256s)
+
 /* Based on the public domain implementation in
  * crypto_hash/keccakc512/simple/ from http://bench.cr.yp.to/supercop.html
  * by Ronny Van Keer
@@ -9,7 +11,6 @@
 #include <stdint.h>
 
 #include "fips202.h"
-#if defined(SPX_FIPS202_H) && defined(PARAMS) && SHAKE_PARAM(PARAMS)
 
 #define NROUNDS 24
 #define ROL(a, offset) (((a) << (offset)) ^ ((a) >> (64 - (offset))))
@@ -597,4 +598,3 @@ void shake256(uint8_t *output, size_t outlen,
         }
     }
 }
-#endif

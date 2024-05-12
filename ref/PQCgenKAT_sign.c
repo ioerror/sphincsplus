@@ -1,3 +1,4 @@
+// +build PQCgenKAT_sign
 
 //
 //  PQCgenKAT_sign.c
@@ -5,9 +6,6 @@
 //  Created by Bassham, Lawrence E (Fed) on 8/29/17.
 //  Copyright © 2017 Bassham, Lawrence E (Fed). All rights reserved.
 //
-#include "params.h"
-#if !defined(CGO)
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -263,6 +261,3 @@ fprintBstr(FILE *fp, char *S, unsigned char *A, unsigned long long L)
 	fprintf(fp, "\n");
 }
 
-#else
-typedef int no_empty_translation_unit_PQCgenKAT_sign;
-#endif

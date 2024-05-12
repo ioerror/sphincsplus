@@ -1,10 +1,11 @@
+//go:build (cgo && (linux || darwin) && (amd64)) && (sphincs_shake_128f || sphincs_shake_128s || sphincs_shake_192f || sphincs_shake_192s || sphincs_shake_256f || sphincs_shake_256s)
+
 #include <stdint.h>
 #include <string.h>
 
-#include "params.h"
-#if defined(SPX_FIPS202_H) && SHAKE_PARAM(PARAMS)
 #include "thash.h"
 #include "address.h"
+#include "params.h"
 #include "utils.h"
 
 #include "fips202.h"
@@ -23,4 +24,3 @@ void thash(unsigned char *out, const unsigned char *in, unsigned int inblocks,
 
     shake256(out, SPX_N, buf, SPX_N + SPX_ADDR_BYTES + inblocks*SPX_N);
 }
-#endif

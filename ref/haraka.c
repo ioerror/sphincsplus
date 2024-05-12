@@ -1,6 +1,5 @@
-#include "params.h"
-#if !defined(SPX_HARAKA_C) && HARAKA_PARAM(PARAMS)
-#define SPX_HARAKA_C
+//go:build (cgo && (linux || darwin) && (amd64)) && (sphincs_haraka_128f || sphincs_haraka_128s || sphincs_haraka_192f || sphincs_haraka_192s || sphincs_haraka_256f || sphincs_haraka_256s)
+
 /*
  * Constant time implementation of the Haraka hash function.
  *
@@ -966,4 +965,3 @@ void haraka256(unsigned char *out, const unsigned char *in,
         out[i] ^= in[i];
     }
 }
-#endif

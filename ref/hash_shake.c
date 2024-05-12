@@ -1,3 +1,5 @@
+//go:build (cgo && (linux || darwin) && (amd64)) && (sphincs_shake_128f || sphincs_shake_128s || sphincs_shake_192f || sphincs_shake_192s || sphincs_shake_256f || sphincs_shake_256s)
+
 #include <stdint.h>
 #include <string.h>
 
@@ -6,7 +8,6 @@
 #include "params.h"
 #include "hash.h"
 #include "fips202.h"
-#if defined(SPX_FIPS202_H) && SHAKE_PARAM(PARAMS)
 
 /* For SHAKE256, there is no immediate reason to initialize at the start,
    so this function is an empty operation. */
@@ -96,4 +97,3 @@ void hash_message(unsigned char *digest, uint64_t *tree, uint32_t *leaf_idx,
     *leaf_idx = (uint32_t)bytes_to_ull(bufp, SPX_LEAF_BYTES);
     *leaf_idx &= (~(uint32_t)0) >> (32 - SPX_LEAF_BITS);
 }
-#endif

@@ -1,10 +1,11 @@
+//go:build (cgo && (linux || darwin) && (amd64)) && (sphincs_sha2_128f || sphincs_sha2_128s || sphincs_sha2_192f || sphincs_sha2_192s || sphincs_sha2_256f || sphincs_sha2_256s)
+
 #include <stdint.h>
 #include <string.h>
-#include "params.h"
-#if defined(SPX_SHA2_H) && SHA2_PARAM(PARAM)
 
 #include "address.h"
 #include "utils.h"
+#include "params.h"
 #include "hash.h"
 #include "sha2.h"
 
@@ -194,5 +195,3 @@ void hash_message(unsigned char *digest, uint64_t *tree, uint32_t *leaf_idx,
     *leaf_idx = (uint32_t)bytes_to_ull(bufp, SPX_LEAF_BYTES);
     *leaf_idx &= (~(uint32_t)0) >> (32 - SPX_LEAF_BITS);
 }
-
-#endif
