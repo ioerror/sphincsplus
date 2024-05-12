@@ -1,4 +1,4 @@
-//go:build (cgo && (linux || darwin) && (amd64)) && (sphincs_shake_128f || sphincs_shake_128s || sphincs_shake_192f || sphincs_shake_192s || sphincs_shake_256f || sphincs_shake_256s)
+//go:build (cgo && (linux || darwin) && (amd64)) && (sphincs_shake_128f || sphincs_shake_192f || sphincs_shake_256f)
 
 #include <stdint.h>
 #include <string.h>
