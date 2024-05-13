@@ -35,16 +35,17 @@ jobs:
           msystem: ${{ matrix.ENVIRONMENT }}
           install: >-
             base-devel
-            mingw-w64-x86_64-toolchain
-            mingw-w64-x86_64-pkg-config
-            mingw-w64-x86_64-gcc
-            mingw-w64-ucrt-x86_64-gcc
-            mingw-w64-x86_64-go
-            mingw-w64-ucrt-x86_64-go
-            make
-            git
-            gcc
             clang
+            gcc
+            git
+            make
+            mingw-w64-ucrt-x86_64-gcc
+            mingw-w64-ucrt-x86_64-go
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-go
+            mingw-w64-x86_64-pkg-config
+            mingw-w64-x86_64-toolchain
+            openssl-devel
 
       - name: Setup Go ${{ matrix.go-version }}
         uses: actions/setup-go@v5
@@ -70,5 +71,5 @@ jobs:
         shell: msys2 {0}
         run: |
           export CC=${{ matrix.CC }}
-          make -C ref HASH=${{ matrix.hash }} THASH=${{ matrix.thash }} PARAMS=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} tests
-          make -C ref HASH=${{ matrix.hash }} THASH=${{ matrix.thash }} PARAMS=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} test
+          make -C ref HASH=${{ matrix.hash }} THASH=${{ matrix.thash }} PARAMS=sphincs-${{ matrix.hash }}-${{ matrix.size }}${{ matrix.option }} tests
+          make -C ref HASH=${{ matrix.hash }} THASH=${{ matrix.thash }} PARAMS=sphincs-${{ matrix.hash }}-${{ matrix.size }}${{ matrix.option }} test
