@@ -61,7 +61,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Install dependencies
         run: |
-          brew install -y openssl
+          brew install openssl
       - name: Run make
         run: |
           export CC=${{ matrix.CC }}
