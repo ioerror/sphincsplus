@@ -3,7 +3,7 @@
 package tests
 
 import (
-	sphincsplus "github.com/katzenpost/sphincsplus/ref"
+	sphincsplus "github.com/ioerror/sphincsplus/ref"
 	"github.com/stretchr/testify/require"
 	"testing"
 )

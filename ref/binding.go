@@ -14,7 +14,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/katzenpost/sphincsplus/ref/params"
+	"github.com/ioerror/sphincsplus/ref/params"
 )
 
 var (

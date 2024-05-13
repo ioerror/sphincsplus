@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-  sphincsplus "github.com/katzenpost/sphincsplus/ref"
+  sphincsplus "github.com/ioerror/sphincsplus/ref"
 )
 
 func TestSignVerifyVectorSpecifics(t *testing.T) {
