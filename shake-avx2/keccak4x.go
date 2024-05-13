@@ -1,7 +1,7 @@
 package sphincsplus
 
 import (
-  "github.com/katzenpost/sphincsplus/shake-avx2/keccak4x"
+  "github.com/ioerror/sphincsplus/shake-avx2/keccak4x"
 )
 
 func Keccak4xEnabled() bool {
