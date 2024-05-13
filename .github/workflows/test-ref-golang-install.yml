@@ -40,6 +40,6 @@ jobs:
         run: |
           export CGO_ENABLE=1
           export CGO_CFLAGS=" -D HASH=${{ matrix.hash }} -D THASH=${{ matrix.thash }} -D PARAMS=sphincs-${{ matrix.hash }}-${{ matrix.size }}${{ matrix.option }}"
-          go install --tags=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v github.com/ioerror/sphincsplus/ref@cgo_module
+          go install --tags=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v github.com/ioerror/sphincsplus/ref@latest
 
 #  vim: set ft=yaml ts=2 sw=2 et :
