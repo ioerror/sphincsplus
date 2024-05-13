@@ -41,7 +41,7 @@ jobs:
     runs-on: ${{ matrix.OS }}
     strategy:
       matrix:
-        OS: ['macos-latest']
+        OS: ['macos-12']
         CC: ['gcc', 'clang']
         hash:
           - sha2
