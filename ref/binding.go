@@ -6,15 +6,15 @@ package sphincsplus
 //#cgo darwin/amd64 test CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
 //#cgo darwin/arm64 CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
 //#cgo darwin/arm64 test CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
-//#cgo haraka-aesni CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
+//#cgo haraka_aesni CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
 //#cgo linux/amd64 CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
 //#cgo linux/amd64 test CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
 //#cgo linux/arm64 CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
 //#cgo linux/arm64 test CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
 //#cgo ref CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
-//#cgo sha2-avx2 CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=sha2-128 -D THASH=robust -D PARAMS=sphincs-sha2-128f
-//#cgo shake-a64 CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=shake-128 -D THASH=robust -D PARAMS=sphincs-shake-128f
-//#cgo shake-avx2 CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=shake-128 -D THASH=robust -D PARAMS=sphincs-shake-128f
+//#cgo sha2_avx2 CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=sha2-128 -D THASH=robust -D PARAMS=sphincs-sha2-128f
+//#cgo shake_a64 CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=shake-128 -D THASH=robust -D PARAMS=sphincs-shake-128f
+//#cgo shake_avx2 CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=shake-128 -D THASH=robust -D PARAMS=sphincs-shake-128f
 //#cgo windows/amd64 CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
 //#cgo windows/amd64 test CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
 //#include "api.h"
