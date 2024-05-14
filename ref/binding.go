@@ -1,13 +1,14 @@
-//go:build cgo && ((linux && amd64) || (darwin && amd64) || (darwin && arm64) || (windows && amd64)) && (sphincs_haraka_128f || sphincs_haraka_128s || sphincs_haraka_192f || sphincs_haraka_192s || sphincs_haraka_256f || sphincs_haraka_256s || sphincs_sha2_128f || sphincs_sha2_128s || sphincs_sha2_192f || sphincs_sha2_192s || sphincs_sha2_256f || sphincs_sha2_256s || sphincs_shake_128f || sphincs_shake_128s || sphincs_shake_192f || sphincs_shake_192s || sphincs_shake_256f || sphincs_shake_256s)
+//go:build cgo && ((linux && amd64) || (darwin && amd64) || (darwin && arm64) || (windows && amd64)) || ((sphincs_haraka_128f || sphincs_haraka_128s || sphincs_haraka_192f || sphincs_haraka_192s || sphincs_haraka_256f || sphincs_haraka_256s || sphincs_sha2_128f || sphincs_sha2_128s || sphincs_sha2_192f || sphincs_sha2_192s || sphincs_sha2_256f || sphincs_sha2_256s || sphincs_shake_128f || sphincs_shake_128s || sphincs_shake_192f || sphincs_shake_192s || sphincs_shake_256f || sphincs_shake_256s) || ((!sphincs_haraka_128f && !sphincs_haraka_128s && !sphincs_haraka_192f && !sphincs_haraka_192s && !sphincs_haraka_256f && !sphincs_haraka_256s && !sphincs_sha2_128f && !sphincs_sha2_128s && !sphincs_sha2_192f && !sphincs_sha2_192s && !sphincs_sha2_256f && !sphincs_sha2_256s && !sphincs_shake_128f && !sphincs_shake_128s && !sphincs_shake_192f && !sphincs_shake_192s && !sphincs_shake_256f && !sphincs_shake_256s)))
+
 
 package sphincsplus
 
-//#cgo amd64 LDFLAGS: -L./
-//#cgo amd64 CFLAGS: -O3 -std=c99 -D CGO=1
-//#cgo darwin/amd64 LDFLAGS: -L./
-//#cgo darwin/amd64 CFLAGS: -O3 -std=c99 -D CGO=1
-//#cgo linux/amd64 LDFLAGS: -L./ -L/usr/lib/x86_64-linux-gnu/
-//#cgo linux/amd64 CFLAGS: -O3 -std=c99 -D CGO=1
+//#cgo CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
+//#cgo sha2-avx2 CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=sha2-128 -D THASH=robust -D PARAMS=sphincs-sha2-128f
+//#cgo ref CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
+//#cgo shake-a64 CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=shake-128 -D THASH=robust -D PARAMS=sphincs-shake-128f
+//#cgo shake-avx2 CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=shake-128 -D THASH=robust -D PARAMS=sphincs-shake-128f
+//#cgo haraka-aesni CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
 //#include "api.h"
 import "C"
 import (
@@ -29,20 +30,19 @@ var (
 	SignatureSize int = C.CRYPTO_BYTES
 
 	// SignatureName is the parameterized signature system name
-
-	// Name returns the string naming of the current
+	// params.Name returns the string naming of the current
 	// Sphincs+ that this binding is being used with.
 	SignatureName = params.Name()
 
 	// ErrPublicKeySize indicates the raw data is not the correct size for a public key.
-	ErrPublicKeySize error = fmt.Errorf("%s: raw public key data size is wrong", Name())
+	ErrPublicKeySize error = fmt.Errorf("%s: raw public key data size is wrong", SchemeName())
 
 	// ErrPrivateKeySize indicates the raw data is not the correct size for a private key.
-	ErrPrivateKeySize error = fmt.Errorf("%s: raw private key data size is wrong", Name())
+	ErrPrivateKeySize error = fmt.Errorf("%s: raw private key data size is wrong", SchemeName())
 )
 
 func SchemeName() string {
-	return SignatureName
+  return params.Name()
 }
 
 // NewKeypair generates a new Sphincs+ keypair.
