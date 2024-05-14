@@ -21,7 +21,7 @@ jobs:
         thash:
           - simple
           - robust
-        OS: ["ubuntu-latest", "macos-latest"]
+        OS: ["ubuntu-latest", "macos-12"]
         go-version: ["1.20"]
          #go-version: ["1.22.x"]
         # later: go-version: ["1.19", "1.20", "1.21.x", "1.22.x"]
