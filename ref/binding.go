@@ -3,12 +3,21 @@
 
 package sphincsplus
 
-//#cgo CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
-//#cgo sha2-avx2 CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=sha2-128 -D THASH=robust -D PARAMS=sphincs-sha2-128f
+//#cgo darwin/amd64 CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
+//#cgo darwin/amd64 test CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
+//#cgo darwin/arm64 CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
+//#cgo darwin/arm64 test CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
+//#cgo haraka-aesni CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
+//#cgo linux/amd64 CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
+//#cgo linux/amd64 test CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
+//#cgo linux/arm64 CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
+//#cgo linux/arm64 test CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
 //#cgo ref CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
+//#cgo sha2-avx2 CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=sha2-128 -D THASH=robust -D PARAMS=sphincs-sha2-128f
 //#cgo shake-a64 CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=shake-128 -D THASH=robust -D PARAMS=sphincs-shake-128f
 //#cgo shake-avx2 CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=shake-128 -D THASH=robust -D PARAMS=sphincs-shake-128f
-//#cgo haraka-aesni CFLAGS: -O3 -std=c99 -D CGO=1 -march=native -fomit-frame-pointer -flto -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
+//#cgo windows/amd64 CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
+//#cgo windows/amd64 test CFLAGS: -O3 -std=c99 -D CGO=1 -D HASH=haraka-128 -D THASH=robust -D PARAMS=sphincs-haraka-128f
 //#include "api.h"
 import "C"
 import (
@@ -29,20 +38,19 @@ var (
 	// SignatureSize is the size in bytes of the signature.
 	SignatureSize int = C.CRYPTO_BYTES
 
-	// SignatureName is the parameterized signature system name
-	// params.Name returns the string naming of the current
-	// Sphincs+ that this binding is being used with.
-	SignatureName = params.Name()
-
 	// ErrPublicKeySize indicates the raw data is not the correct size for a public key.
-	ErrPublicKeySize error = fmt.Errorf("%s: raw public key data size is wrong", SchemeName())
+	ErrPublicKeySize error = fmt.Errorf("%s: raw public key data size is wrong", Name())
 
 	// ErrPrivateKeySize indicates the raw data is not the correct size for a private key.
-	ErrPrivateKeySize error = fmt.Errorf("%s: raw private key data size is wrong", SchemeName())
+	ErrPrivateKeySize error = fmt.Errorf("%s: raw private key data size is wrong", Name())
 )
 
-func SchemeName() string {
+func Name() string {
   return params.Name()
+}
+
+func Implementation() string {
+  return params.Implementation()
 }
 
 // NewKeypair generates a new Sphincs+ keypair.
