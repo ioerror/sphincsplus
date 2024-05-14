@@ -1,4 +1,4 @@
-name: Tests golang bindings for ref implementation
+name: Tests golang bindings for haraka-aesni implementation
 
 on:
   - push
@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         hash:
-          - sha2
+          - haraka
         size:
           - 128
           - 192
@@ -22,9 +22,7 @@ jobs:
           - simple
           - robust
         OS: ["ubuntu-latest", "macos-12"]
-        go-version: ["1.20"]
-         #go-version: ["1.22.x"]
-        # later: go-version: ["1.19", "1.20", "1.21.x", "1.22.x"]
+        go-version: ["1.22.x"]
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
@@ -37,11 +35,11 @@ jobs:
       - name: Run go build
         run: |
           export CGO_ENABLE=1
-          go build --tags=sha2_avx2,sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v ./sha2-avx2/...
+          go build --tags=haraka_aesni,sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v ./haraka-aesni/...
 
       - name: Run go test
         run: |
           export CGO_ENABLE=1
-          go test --tags=sha2_avx2,sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v ./sha2-avx2/...
+          go test --tags=haraka-aesni,sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v ./haraka-aesni/...
 
 #  vim: set ft=yaml ts=2 sw=2 et :

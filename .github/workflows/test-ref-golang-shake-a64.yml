@@ -1,4 +1,4 @@
-name: Tests golang bindings for ref implementation
+name: Tests golang bindings for shake-a64 implementation
 
 on:
   - push
@@ -21,10 +21,8 @@ jobs:
         thash:
           - simple
           - robust
-        OS: ["ubuntu-latest", "macos-12"]
-        go-version: ["1.20"]
-         #go-version: ["1.22.x"]
-        # later: go-version: ["1.19", "1.20", "1.21.x", "1.22.x"]
+        OS: ["macos-latest"]
+        go-version: ["1.22.x"]
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
@@ -37,11 +35,11 @@ jobs:
       - name: Run go build
         run: |
           export CGO_ENABLE=1
-          go build --tags=shake_avx2,sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v ./shake-avx2/...
+          go build --tags=shake_a64,sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v ./shake-a64/...
 
       - name: Run go test
         run: |
           export CGO_ENABLE=1
-          go test --tags=shake_avx2,sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v ./shake-avx2/...
+          go test --tags=shake_a64,sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v ./shake-a64/...
 
 #  vim: set ft=yaml ts=2 sw=2 et :
