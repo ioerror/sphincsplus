@@ -40,6 +40,6 @@ jobs:
       - name: Run go test
         run: |
           export CGO_ENABLE=1
-          go test --tags=haraka-aesni,sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v ./haraka-aesni/...
+          go test --tags=haraka_aesni,sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }} -v ./haraka-aesni/...
 
 #  vim: set ft=yaml ts=2 sw=2 et :
