@@ -34,13 +34,30 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
 
-      - name: Run go test
+      - name: Build with tag
         run: |
           export CGO_ENABLE=1
           export TAG=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }}
           export THASH=${{ matrix.thash }}
           export HASH=${{ matrix.hash }}
-          export TAG=sphincs_$HASH_${{ matrix.size }}${{ matrix.option }}
+          #cd ref/ && go test --tags=$TAG,$THASH,$HASH -v ./...
+          cd ref/ && go build --tags=$TAG -v
+
+      - name: Run go top-level test with tag
+        run: |
+          export CGO_ENABLE=1
+          export TAG=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }}
+          export THASH=${{ matrix.thash }}
+          export HASH=${{ matrix.hash }}
+          #cd ref/ && go test --tags=$TAG,$THASH,$HASH -v ./...
+          cd ref/ && go test --tags=$TAG -v 
+
+      - name: Run all go tests with tag
+        run: |
+          export CGO_ENABLE=1
+          export TAG=sphincs_${{ matrix.hash }}_${{ matrix.size }}${{ matrix.option }}
+          export THASH=${{ matrix.thash }}
+          export HASH=${{ matrix.hash }}
           #cd ref/ && go test --tags=$TAG,$THASH,$HASH -v ./...
           cd ref/ && go test --tags=$TAG -v ./...
 

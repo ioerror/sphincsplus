@@ -20,9 +20,16 @@ jobs:
         with:
           go-version: ${{ matrix.go-version }}
 
-      - name: Run go test without setting any environment variables
+      - name: Build without setting any environment variables
+        run: |
+          cd ref/ && go build -v && go clean -v
+
+      - name: Run top-level go test without setting any environment variables
         run: |
           cd ref/ && go test -v
+
+      - name: Run all go test without setting any environment variables
+        run: |
           cd ref/ && go test -v ./...
 
 #  vim: set ft=yaml ts=2 sw=2 et :
